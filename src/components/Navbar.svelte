@@ -11,7 +11,7 @@
 
 <header class="navbar-wrapper">
   <div class="container navbar-inner">
-    <a href="#" class="brand-link">
+    <a href="#app" class="brand-link">
       <div class="brand-icon">
         <Zap size={18} class="icon-zap" />
       </div>

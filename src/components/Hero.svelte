@@ -117,10 +117,6 @@
     box-shadow: 0 0 8px #e11d48;
   }
 
-  .pill-icon {
-    color: #fb7185;
-  }
-
   .pill-text {
     font-family: var(--font-mono);
     font-size: 0.8rem;

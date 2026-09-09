@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { untrack } from 'svelte';
   import { Zap, Activity, Cpu, RotateCcw, Plus, Minus, Sparkles, Code, Check } from '@lucide/svelte';
 
   // Svelte 5 Runes in action!
@@ -16,9 +17,11 @@
 
   // Track state changes via $effect
   $effect(() => {
-    // Whenever count changes, increment update counter
-    const current = count;
-    updateCount++;
+    // Read count to subscribe to changes
+    const _ = count;
+    untrack(() => {
+      updateCount++;
+    });
   });
 
   function checkPrime(n: number): boolean {
@@ -510,10 +513,6 @@
     font-weight: 700;
     font-size: 0.95rem;
     margin-bottom: 0.4rem;
-  }
-
-  .callout-icon {
-    color: #f43f5e;
   }
 
   .callout-text {
