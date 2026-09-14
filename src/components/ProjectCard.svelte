@@ -5,7 +5,7 @@
     export interface Project {
         id: string;
         title: string;
-        category: ('active' | 'web' | 'systems' | 'fun')[];
+        category: ('active' | 'web' | 'systems' | 'ideas' | 'fun')[];
         description: string;
         status: string;
         tech: string[];

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { FolderGit2, ExternalLink, Sparkles, Layers, ArrowUpRight } from '@lucide/svelte';
   import GithubIcon from './GithubIcon.svelte';
+  import ProjectCard, { type Project } from './ProjectCard.svelte';
 
   type Category = 'all' | 'active' | 'web' | 'systems' | 'ideas';
 
@@ -112,50 +113,7 @@
     <!-- Projects Grid -->
     <div class="projects-grid">
       {#each filteredProjects as project (project.id)}
-        <div class="glass-panel project-card {project.accent === 'blue' ? 'accent-blue-card' : 'accent-maroon-card'}">
-          <div class="card-top">
-            <div class="status-chip {project.accent === 'blue' ? 'chip-blue' : 'chip-maroon'}">
-              <span class="chip-dot"></span>
-              <span>{project.status}</span>
-            </div>
-
-            <div class="card-links">
-              {#if project.repoUrl}
-                <a 
-                  href={project.repoUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  class="icon-link" 
-                  title="View GitHub Repository"
-                >
-                  <GithubIcon size={17} />
-                </a>
-              {/if}
-              {#if project.liveUrl}
-                <a 
-                  href={project.liveUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  class="icon-link" 
-                  title="Live Demo"
-                >
-                  <ArrowUpRight size={18} />
-                </a>
-              {/if}
-            </div>
-          </div>
-
-          <h3 class="project-title">{project.title}</h3>
-          <p class="project-desc">{project.description}</p>
-
-          <div class="card-bottom">
-            <div class="tech-tags">
-              {#each project.tech as t}
-                <span class="tech-tag">{t}</span>
-              {/each}
-            </div>
-          </div>
-        </div>
+        <ProjectCard {project} />
       {/each}
     </div>
   </div>
