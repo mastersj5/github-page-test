@@ -14,7 +14,13 @@
         accent?: 'blue' | 'maroon';
     }
 
-    let { project }: { project: Project } = $props();
+    let { 
+        project,
+        ontagclick
+     }: { 
+        project: Project;
+        ontagclick?: (tag: string) => void;
+    } = $props();
 </script>
 
 <article class="project-card border-{project.accent ?? 'blue'}">
@@ -43,7 +49,14 @@
 
     <div class="tech-tags">
         {#each project.tech as techTag}
-            <span class="tech-pill">{techTag}</span>
+            <button
+                type="button"
+                class="tech-pill"
+                onclick={() =>
+                ontagclick?.(techTag)}
+            >
+                {techTag}
+            </button>
         {/each}
     </div>
 </article>
@@ -132,7 +145,16 @@
         background: rgba(255, 255, 255, 0.04);
         border: 1px solid rgba(255, 255, 255, 0.08);
         color: #cbd5e1;
-        padding: 0.2rem 0.5rem;
+        padding: 0.2rem 0.55rem;
         border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .tech-pill:hover {
+        background: rgba(56, 189, 248, 0.15);
+        border-color: rgba(56, 189, 248, 0.4);
+        color: #38bdf8;
+        transform: translateY(-1px);
     }
 </style>
