@@ -6,6 +6,7 @@
   type Category = 'all' | 'active' | 'web' | 'systems' | 'ideas';
 
   let selectedCategory = $state<Category>('all');
+  let selectedTag = $state<string | null>(null);
 
   const projects: Project[] = [
     {
