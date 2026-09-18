@@ -50,9 +50,14 @@
   ];
 
   let filteredProjects = $derived(
-    selectedCategory === 'all'
-      ? projects
-      : projects.filter(p => p.category.includes(selectedCategory as any))
+    projects.filter(p => {
+      const matchesCategory =
+    selectedCategory === 'all' ||
+    p.category.includes(selectedCategory as any)
+      const matchesTag = !selectedTag ||
+    p.tech.includes(selectedTag);
+      return matchesCategory && matchesTag;
+    })
   );
 </script>
 
