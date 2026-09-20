@@ -35,7 +35,7 @@
     </div>
 
     <!-- Category Filter Bar --> 
-    <!-- Categories: 'all' | 'active' | 'systems' | 'web' | 'ai' | 'games' | 'ideas'; -->
+    <!-- Categories: 'all' | 'active' | 'academic' | 'systems' | 'web' | 'ai' | 'games' | 'ideas'; -->
     <div class="filter-bar">
       <button 
         class="filter-btn {selectedCategory === 'all' ? 'active-filter' : ''}" 

@@ -1,4 +1,4 @@
-export type Category = 'all' | 'active' | 'systems' | 'web' | 'ai' | 'games' | 'ideas';
+export type Category = 'all' | 'active' | 'academic' | 'systems' | 'web' | 'ai' | 'games' | 'ideas';
 
 export interface Project {
     id: string;
@@ -16,7 +16,7 @@ export const projects: Project[] = [
     {
         id: 'iceberg-exchange',
         title: 'Iceberg – Financial Exchange',
-        category: ['systems', 'web'],
+        category: ['systems', 'web', 'academic'],
         description: 'A robust, deterministic trading platform built for speed and auditability. Features an order book matching engine, secure client access, and transaction verification.',
         status: 'Flagship',
         tech: ['C++', 'TypeScript', 'WebSockets', 'Financial Systems'],
@@ -36,7 +36,7 @@ export const projects: Project[] = [
     {
         id: 'pong-ai-neon',
         title: 'Pong AI Test: Neon Edition',
-        category: ['web', 'games'],
+        category: ['web', 'games', 'ai'],
         description: 'A 2026 synthwave modernization of the classic Pong game built with JavaScript and Canvas, featuring AI vs. AI autoplay and reactive particle dynamics.',
         status: 'Live Demo',
         tech: ['JavaScript', 'HTML5 Canvas', 'Game AI', 'CSS Glow'],
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     {
         id: 'fake-news-detector',
         title: 'Neural Fake News Classifier',
-        category: ['ai'],
+        category: ['ai', 'academic'],
         description: 'Natural language processing classifier utilizing a TensorFlow neural network to analyze linguistic cues and flag misleading articles with high accuracy.',
         status: 'Research',
         tech: ['Python', 'TensorFlow', 'NLP', 'Jupyter', 'Scikit-Learn'],
@@ -75,13 +75,23 @@ export const projects: Project[] = [
         accent: 'maroon'
     },
     {
+        id: 'r3f-3d-experiments',
+        title: '3D Web Scene Graphs & R3F',
+        category: ['ideas', 'web'],
+        description: 'Exploration into immersive web experiences combining Next.js, React Three Fiber (Three.js), and interactive WebGL shaders.',
+        status: 'Prototype',
+        tech: ['Three.js', 'React Three Fiber', 'WebGL', 'GLSL Shaders'],
+        repoUrl: 'https://github.com/mastersj5/next-portfolio',
+        accent: 'blue'
+    },
+    {
         id: 'svelte5-portfolio',
         title: 'Svelte 5 Portfolio & Lab',
-        category: ['web', 'systems'],
+        category: ['active', 'web', 'systems'],
         description: 'The next generation of mastersj5.github.io. Built with Svelte 5 runes, Vite, and GitHub Actions CI/CD to replace the legacy Jekyll theme.',
         status: 'Active Lab',
         tech: ['Svelte 5', 'TypeScript', 'Vite 8', 'GitHub Actions'],
         repoUrl: 'https://github.com/mastersj5/github-page-test',
         accent: 'blue'
-    }
+    },
 ]
