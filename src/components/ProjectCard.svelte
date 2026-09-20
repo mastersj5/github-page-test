@@ -1,18 +1,7 @@
 <script lang="ts">
     import { ExternalLink, Layers, ArrowUpRight } from '@lucide/svelte';
     import GithubIcon from './GithubIcon.svelte';
-
-    export interface Project {
-        id: string;
-        title: string;
-        category: ('active' | 'web' | 'systems' | 'ideas' | 'fun')[];
-        description: string;
-        status: string;
-        tech: string[];
-        repoUrl?: string;
-        liveUrl?: string;
-        accent?: 'blue' | 'maroon';
-    }
+    import type { Project } from '../data/projects';
 
     let { 
         project,
