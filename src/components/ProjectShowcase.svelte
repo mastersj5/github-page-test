@@ -1,53 +1,11 @@
 <script lang="ts">
   import { FolderGit2, ExternalLink, Sparkles, Layers, ArrowUpRight } from '@lucide/svelte';
   import GithubIcon from './GithubIcon.svelte';
-  import ProjectCard, { type Project } from './ProjectCard.svelte';
-
-  type Category = 'all' | 'active' | 'web' | 'systems' | 'ideas';
+  import ProjectCard from './ProjectCard.svelte';
+  import { projects, type Project, type Category } from '../data/projects';
 
   let selectedCategory = $state<Category>('all');
   let selectedTag = $state<string | null>(null);
-
-  const projects: Project[] = [
-    {
-      id: 'github-page-test',
-      title: 'Reactive Playground & Lab',
-      category: ['active', 'web'],
-      description: 'The current active testbed. Built with Svelte 5 runes, TypeScript, and Vite. Designed to explore non-virtual-DOM architectures and automated CI/CD deployment.',
-      status: 'Active Lab',
-      tech: ['Svelte 5', 'TypeScript', 'Vite 8', 'GitHub Pages'],
-      repoUrl: 'https://github.com/mastersj5/github-page-test',
-      accent: 'blue'
-    },
-    {
-      id: 'mastersj5-portfolio',
-      title: 'mastersj5.github.io Overhaul',
-      category: ['active', 'web'],
-      description: 'The primary portfolio repository. Slated to receive the tested and polished playground codebase via Strategy C (Repo Swap) or direct main push once full feature set is finalized.',
-      status: 'Target Swap',
-      tech: ['Svelte 5', 'Tailored CSS', 'SEO', 'GitHub Pages'],
-      repoUrl: 'https://github.com/mastersj5/mastersj5.github.io',
-      accent: 'maroon'
-    },
-    {
-      id: 'rust-wasm-engine',
-      title: 'Rust WebAssembly Particle SIM',
-      category: ['systems', 'ideas'],
-      description: 'High-octane browser particle physics simulation compiled from Rust using wasm-bindgen and rendered to an HTML5 canvas at 120 FPS.',
-      status: 'Prototype',
-      tech: ['Rust (Cargo)', 'WebAssembly', 'Canvas API', 'wasm-bindgen'],
-      accent: 'maroon'
-    },
-    {
-      id: 'go-micro-engine',
-      title: 'Go High-Concurrency Telemetry',
-      category: ['systems', 'ideas'],
-      description: 'Lightweight backend metrics aggregator and WebSocket streamer leveraging Go goroutines and channels for ultra-low latency data transfer.',
-      status: 'Idea',
-      tech: ['Go 1.26', 'WebSockets', 'Concurrency', 'HTTP/3'],
-      accent: 'blue'
-    }
-  ];
 
   let filteredProjects = $derived(
     projects.filter(p => {
@@ -76,7 +34,8 @@
       </p>
     </div>
 
-    <!-- Category Filter Bar -->
+    <!-- Category Filter Bar --> 
+    <!-- Categories: 'all' | 'active' | 'systems' | 'web' | 'ai' | 'games' | 'ideas'; -->
     <div class="filter-bar">
       <button 
         class="filter-btn {selectedCategory === 'all' ? 'active-filter' : ''}" 
@@ -94,13 +53,31 @@
         class="filter-btn {selectedCategory === 'web' ? 'active-filter' : ''}" 
         onclick={() => selectedCategory = 'web'}
       >
-        Web &amp; Svelte
+        Web &amp; Apps
       </button>
       <button 
         class="filter-btn {selectedCategory === 'systems' ? 'active-filter' : ''}" 
         onclick={() => selectedCategory = 'systems'}
       >
-        Systems (Rust / Go)
+        Systems &amp; Rust
+      </button>
+      <button 
+        class="filter-btn {selectedCategory === 'ai' ? 'active-filter' : ''}" 
+        onclick={() => selectedCategory = 'ai'}
+      >
+        AI &amp; ML
+      </button>
+      <button 
+        class="filter-btn {selectedCategory === 'games' ? 'active-filter' : ''}" 
+        onclick={() => selectedCategory = 'games'}
+      >
+        Games &amp; Canvas
+      </button>
+      <button 
+        class="filter-btn {selectedCategory === 'ideas' ? 'active-filter' : ''}" 
+        onclick={() => selectedCategory = 'ideas'}
+      >
+        Ideas
       </button>
     </div>
 

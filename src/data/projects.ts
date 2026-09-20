@@ -1,4 +1,4 @@
-export type Category = 'all' | 'systems' | 'web' | 'ai' | 'games';
+export type Category = 'all' | 'active' | 'systems' | 'web' | 'ai' | 'games' | 'ideas';
 
 export interface Project {
     id: string;
