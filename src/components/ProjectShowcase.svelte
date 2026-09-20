@@ -104,10 +104,25 @@
       </button>
     </div>
 
+    {#if selectedTag}
+      <div class="tag-filter-indicator">
+        <span>Filtered by tech: <strong>{selectedTag}</strong></span>
+        <button type="button" class="clear-tag-btn" onclick={() => selectedTag = null}>
+          Clear &times;
+        </button>
+      </div>
+    {/if}
+
     <!-- Projects Grid -->
     <div class="projects-grid">
       {#each filteredProjects as project (project.id)}
-        <ProjectCard {project} />
+        <ProjectCard 
+          {project}
+          ontagclick={(tag) => {
+            // Toggle: clicking the same tag clears it; clicking a new tag selects it
+            selectedTag = selectedTag == tag ? null : tag;
+          }}
+          />
       {/each}
     </div>
   </div>
@@ -172,6 +187,33 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.5rem;
+  }
+
+  .tag-filter-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 8px;
+    color: #38bdf8;
+    font-size: 0.875rem;
+  }
+
+  .clear-tag-btn {
+    background: transparent;
+    border: none;
+    color: #f8fafc;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0 0.25rem;
+    transition: opacity 0.2s;
+  }
+
+  .clear-tag-btn:hover {
+    opacity: 0.7;
   }
 
 </style>
