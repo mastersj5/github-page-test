@@ -2,6 +2,8 @@
     import { ExternalLink, Layers, ArrowUpRight } from '@lucide/svelte';
     import GithubIcon from './GithubIcon.svelte';
     import type { Project } from '../data/projects';
+    import { scale, fade } from 'svelte/transition';
+    import { cubicOut } from 'svelte/easing';
 
     let { 
         project,
@@ -12,7 +14,11 @@
     } = $props();
 </script>
 
-<article class="project-card border-{project.accent ?? 'blue'}">
+<article 
+    class="project-card border-{project.accent ?? 'blue'}"
+    in:scale={{ start: 0.96, duration: 250, easing: cubicOut }}
+    out:fade={{ duration: 120 }}
+>
     <div class="card-header">
         <div class="badge-group">
             <span class="status-pill status-{project.status.toLowerCase().replace(/\s+/g, '-')}">
@@ -60,7 +66,9 @@
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        transition: transform 0.2s ease, border-color 0.2s ease;
+        height: 100%;
+        /* Only transition colors on hover, don't fight Svelte's transform */
+        transition: box-shadow 0.2s ease, border-color 0.2s ease;
     }
     
     .project-card:hover {

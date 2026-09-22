@@ -4,6 +4,8 @@
   import ProjectCard from './ProjectCard.svelte';
   import { projects, type Project, type Category } from '../data/projects';
   import { slide } from 'svelte/transition';
+  import { flip } from 'svelte/animate';
+  import { cubicOut } from 'svelte/easing';
 
   let selectedCategory = $state<Category>('all');
   let selectedTag = $state<string | null>(null);
@@ -94,13 +96,15 @@
     <!-- Projects Grid -->
     <div class="projects-grid">
       {#each filteredProjects as project (project.id)}
-        <ProjectCard 
-          {project}
-          ontagclick={(tag) => {
-            // Toggle: clicking the same tag clears it; clicking a new tag selects it
-            selectedTag = selectedTag == tag ? null : tag;
-          }}
-          />
+        <div class="card-flip-wrapper" animate:flip={{ duration: 300, easing: cubicOut }}>
+          <ProjectCard 
+            {project}
+            ontagclick={(tag) => {
+              // Toggle: clicking the same tag clears it; clicking a new tag selects it
+              selectedTag = selectedTag == tag ? null : tag;
+            }}
+            />
+        </div>
       {/each}
     </div>
   </div>
@@ -192,6 +196,12 @@
 
   .clear-tag-btn:hover {
     opacity: 0.7;
+  }
+
+  .card-flip-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
 </style>
