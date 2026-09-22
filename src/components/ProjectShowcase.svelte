@@ -3,6 +3,7 @@
   import GithubIcon from './GithubIcon.svelte';
   import ProjectCard from './ProjectCard.svelte';
   import { projects, type Project, type Category } from '../data/projects';
+  import { slide } from 'svelte/transition';
 
   let selectedCategory = $state<Category>('all');
   let selectedTag = $state<string | null>(null);
@@ -82,7 +83,7 @@
     </div>
 
     {#if selectedTag}
-      <div class="tag-filter-indicator">
+      <div class="tag-filter-indicator" transition:slide={{ duration: 200 }}>
         <span>Filtered by tech: <strong>{selectedTag}</strong></span>
         <button type="button" class="clear-tag-btn" onclick={() => selectedTag = null}>
           Clear &times;
