@@ -44,11 +44,14 @@ Welcome to the `github-page-test` repository. This document defines the working 
 ## 4. Current Progress & Roadmap
 
 - [x] Initial Vite + Svelte 5 + TypeScript setup
-- [x] Runes lab demonstration
-- [x] Component extraction: `ProjectCard.svelte` extracted from `ProjectShowcase.svelte`
-- [x] Single source of truth for `Project` type in `ProjectCard.svelte`
-- [x] Verification with `svelte-check` (0 errors, 0 warnings)
-- [ ] **Next Steps:**
-  1. Refining `ProjectCard.svelte` styling, hover states, and interactive actions (e.g. tag filtering or modal preview).
-  2. Transitioning actual portfolio project data from legacy `mastersj5.github.io`.
-  3. Dynamic animations & transitions using Svelte 5 transition directives.
+- [x] Runes lab demonstration (`ReactivityLab.svelte`)
+- [x] Component extraction: `ProjectCard.svelte` and single source of truth in `src/data/projects.ts`
+- [x] Real portfolio project data transitioned from legacy `mastersj5.github.io`
+- [x] Svelte 5 callback props (`ontagclick`) & `$derived` multi-criteria filtering
+- [x] Fluid transitions: Svelte `slide`, `scale`, `fade`, and FLIP grid re-flow (`animate:flip`)
+- [ ] **Current Focus: Option 2 – About & Background Section (`src/components/About.svelte`)**
+  - University of Dayton CS graduate bio, technical philosophy, interactive skills tabs, and CV download.
+- [ ] **Roadmap Queue (Planned Next):**
+  - **Option 1 – Project Deep-Dive Modal**: Interactive dialog powered by Svelte 5 Snippets (`{#snippet}` / `{@render}`), extended architecture details, and `<svelte:window>` keyboard controls.
+  - **Option 3 – Interactive Canvas Mini-Game**: Embedded Pong AI / synthwave canvas running live via Svelte 5's `$effect()` lifecycle & cleanup.
+  - **Option 4 – CI/CD & GitHub Pages Deployment**: Verify production bundle, configure Vite base path, and run automated deployment to GitHub Pages.
